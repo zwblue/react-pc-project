@@ -16,7 +16,7 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Button type='primary' dashed block ghost size='small' icon='loading'>首页加载中</Button>
+        <Button type='primary' block ghost size='small' icon='loading'>首页加载中</Button>
         <div className={css.lfBox}></div>
       </div>
     )
