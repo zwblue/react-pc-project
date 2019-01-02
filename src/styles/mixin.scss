@@ -4,6 +4,19 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@mixin wh($size) {
+  width: $size;
+  height: $size;
+}
+
+// 行高垂直居中
+@mixin hCenter($size){
+  height: $size;
+  line-height: $size;
+}
+
+// flex
 @mixin cj($type: space-between) {
   display: flex;
   justify-content: $type;

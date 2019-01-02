@@ -1,0 +1,34 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variable.scss';
+.header{
+  border: 1px solid $whiteBd;
+  display: flex;
+  position: relative;
+  z-index: 99;
+  background: $whiteBg;
+}
+.logo{
+ @include hCenter(64px);
+  font-size: $bigestSize;
+  min-width: 220px;
+  width: 20%;
+  text-align: center;
+}
+.logoIcon{
+  @include wh(28px);
+  margin-right:$marginSize;
+}
+.rightMenu{
+  margin:auto 30px auto auto;
+}
+.login{
+  margin-left:30px; 
+}
+.menuItem{
+  padding: 5px 15px;
+  display: inline-block;
+  cursor: pointer;
+  &:hover{
+    color: $primary;
+  }
+}

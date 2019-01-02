@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Button } from 'antd'
 import { updateConfig } from '../actions/config';
 
-import css from './App.module.scss'
+// components
+import Header from '../components/layout/Header'
+import Content from './Content'
+
+
 
 export class App extends Component {
   static propTypes = {
@@ -16,8 +19,8 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Button type='primary' block ghost size='small' icon='loading'>首页加载中</Button>
-        <div className={css.lfBox}></div>
+        <Header></Header>
+        <Content></Content>
       </div>
     )
   }

@@ -2,13 +2,15 @@
   @return $px / 750 * 10rem;
 }
 // 边框倒角大小
-$radiusSize: Px(12);
+$radiusSize: 5px;
 
 // 字体大小
-$baseSize:Px(30);
-$bigerSize:Px(33);//0.48
-$bigestSize:Px(36);
-$smallSize:Px(27);
+$baseSize:14px;
+$bigerSize:16px;//0.48
+$bigestSize:18px;
+$smallSize:12px;
+// margin大小
+$marginSize: 8px;
 // 基本字体色彩
 $grayText: #999;
 $whiteText: #FFF;
