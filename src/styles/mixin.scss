@@ -1,0 +1,33 @@
+@mixin imgBg($url) {
+  background-image: url($url);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@mixin cj($type: space-between) {
+  display: flex;
+  justify-content: $type;
+  align-items: center;
+}
+
+//定位上下居中
+@mixin yCenter {
+position: absolute;
+top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位左右居中
+@mixin xCenter {
+position: absolute;
+left: 50%;
+  transform: translateX(-50%);
+}
+
+//定位上下左右居中
+@mixin xyCenter {
+position: absolute;
+top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
