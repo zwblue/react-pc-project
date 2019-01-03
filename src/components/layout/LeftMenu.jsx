@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 // component
 import { Menu, Icon } from 'antd';
 
+// router
+import { withRouter } from 'react-router-dom'
+
 const SubMenu = Menu.SubMenu;
 const MyIcon = Icon.createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_824133_5nkbucjjgq4.js', // 在 iconfont.cn 上生成
@@ -125,4 +128,4 @@ const mapDispatchToProps = {
   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeftMenu)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LeftMenu))

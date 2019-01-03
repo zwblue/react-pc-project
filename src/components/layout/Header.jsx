@@ -8,22 +8,31 @@ import { Button } from 'antd'
 import BaseSearch from '../base/BaseSearch'
 import BaseTheme from '../base/BaseTheme'
 
+// router
+import { withRouter } from 'react-router-dom'
+
 export class Header extends Component {
   static propTypes = {
     // prop: PropTypes
+  }
+  componentDidMount(){
+    console.log(9999, this.props)
   }
   constructor(props) {
     super(props)
     this.state = {
        rightMenu: [
-         {name:'首页', id: 1},
-         {name:'组件', id: 2},
-         {name:'问题', id: 3},
-         {name:'配置', id: 4},
+         {name:'首页', id: 1, link: '/'},
+         {name:'组件', id: 2, link: '/components'},
+         {name:'问题', id: 3, link: '/qus'},
+         {name:'配置', id: 4, link: '/config'},
        ]
     }
   }
-  
+  goRouter(link) {
+    const { history } = this.props
+    history.push(link)
+  }
   render() {
     const {theme} = this.props
     const {rightMenu} = this.state
@@ -31,14 +40,14 @@ export class Header extends Component {
     return (
     <header className={`${style.header} bot-border`}>
       <div className={style.logo}>
-          <img className={style.logoIcon} src="./favicon.ico" alt=""/>    React Project
+          <img className={style.logoIcon} src="./favicon.ico" alt=""/> React Project
       </div>
       <BaseSearch defaultText='在 react project 中搜索'></BaseSearch>
       <div className={style.rightMenu}>
         {
           rightMenu.map((item) => {
             return (
-            <div key={item.id} className={`link ${style.menuItem}`}>
+            <div key={item.id} onClick={()=>this.goRouter(item.link)} className={`link ${style.menuItem}`}>
               {item.name}
             </div>
             )
@@ -61,4 +70,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))
