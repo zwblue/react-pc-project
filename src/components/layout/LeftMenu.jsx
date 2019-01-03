@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 // component
 import { Menu, Icon } from 'antd';
-
 // router
 import { withRouter } from 'react-router-dom'
 
