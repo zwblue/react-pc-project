@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { updateConfig } from '../actions/config';
-
 // components
 import Header from '../components/layout/Header'
 import Content from './Content'
