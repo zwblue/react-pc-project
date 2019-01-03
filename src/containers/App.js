@@ -7,18 +7,19 @@ import { updateConfig } from '../actions/config';
 import Header from '../components/layout/Header'
 import Content from './Content'
 
-
+// style
+import style from './App.module.scss'
 
 export class App extends Component {
   static propTypes = {
     theme: PropTypes.string,
   }
   componentDidMount() {
-    this.props.updateConfig({theme: 'white'})
   }
   render() {
+    const {theme} = this.props
     return (
-      <div>
+      <div className={`${style.appBox} ${theme}Theme`}>
         <Header></Header>
         <Content></Content>
       </div>
@@ -31,7 +32,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateConfig: (config)=>dispatch(updateConfig(config))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -25,10 +25,11 @@ export class Header extends Component {
   }
   
   render() {
+    const {theme} = this.props
     const {rightMenu} = this.state
     const userName = this.props.userName || '未登录'
     return (
-    <header className={style.header}>
+    <header className={`${style.header} bot-border`}>
       <div className={style.logo}>
           <img className={style.logoIcon} src="./favicon.ico" alt=""/>    React Project
       </div>
@@ -43,8 +44,8 @@ export class Header extends Component {
             )
           })
         }
-        <div className={style.menuItem}> <BaseTheme name='主题'></BaseTheme></div>
-        <Button className={`${style.login} ${style.menuItem}`}>{userName}</Button>
+        <div className={style.menuItem}> <BaseTheme theme={theme} name='主题'></BaseTheme></div>
+        <Button ghost className={`${style[theme+'Login']} ${style.menuItem} all-border`}>{userName}</Button>
       </div>
     </header>
     )
@@ -52,11 +53,12 @@ export class Header extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  
+  theme: state.config.theme
 })
 
-const mapDispatchToProps = {
-  
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

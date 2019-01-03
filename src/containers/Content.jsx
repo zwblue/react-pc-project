@@ -6,17 +6,20 @@ import { connect } from 'react-redux'
 import style from './Content.module.scss'
 
 // Component
-import { Card } from 'antd';
+import LeftMenu from '../components/layout/LeftMenu'
 
 export class Content extends Component {
   static propTypes = {
-    prop: PropTypes
+    // prop: PropTypes
   }
 
   render() {
     return (
-      <Card  className={style.cardContent}>
-      </Card>
+      <div className={`${style.contentBox} all-border`}>
+        <LeftMenu></LeftMenu>
+        <div className={style.rightContent}>
+        </div>
+      </div>
     )
   }
 }

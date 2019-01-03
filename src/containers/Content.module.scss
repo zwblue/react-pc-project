@@ -1,11 +1,16 @@
 @import '../styles/variable.scss';
-.cardContent{
-  width: 96%;
+.contentBox{
+  display: flex;
   margin: 0 auto;
-  border-radius:$radiusSize;
+  width: 99%;
+  border-radius:0 0 $radiusSize $radiusSize;
+  overflow: hidden;
   position: fixed;
-  top:65px;
-  bottom:0;
+  top:64px;
+  bottom:5px;
   left:0;
   right:0;
+}
+.rightContent{
+  flex:1;
 }

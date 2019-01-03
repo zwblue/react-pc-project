@@ -1,11 +1,10 @@
 @import '../../styles/mixin.scss';
 @import '../../styles/variable.scss';
 .header{
-  border: 1px solid $whiteBd;
   display: flex;
+  box-sizing: border-box;
   position: relative;
   z-index: 99;
-  background: $whiteBg;
 }
 .logo{
  @include hCenter(64px);
@@ -21,8 +20,13 @@
 .rightMenu{
   margin:auto 30px auto auto;
 }
-.login{
+.darkLogin {
   margin-left:30px; 
+  color:$lightText;
+}
+.lightLogin {
+  margin-left:30px; 
+  color:$darkText;
 }
 .menuItem{
   padding: 5px 15px;
