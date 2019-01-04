@@ -117,7 +117,14 @@ export class LeftMenu extends Component {
     });
   }
   onOpenChange = (e) => {
-    console.log(e)
+    if(e.length===0) return
+    const activeSubMenu = e[e.length-1]
+    const array =  this.state.menuList.filter((item) => {
+      return item.subId === activeSubMenu
+    })
+    this.setState({
+      menu: array[0].menus[0].id,
+    });
   }
   render() {
     const {menuList, menu} = this.state
