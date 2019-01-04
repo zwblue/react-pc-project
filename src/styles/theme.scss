@@ -17,6 +17,9 @@
   .top-border{
     border-top:1px solid $lightBd;
   }
+  .lf-border{
+    border-left:1px solid $lightBd;
+  }
   .all-border{
     border:1px solid $lightBd;
   }
@@ -27,6 +30,9 @@
   }
   .top-border{
     border-top:1px solid $darkBd;
+  }
+  .lf-border{
+    border-left:1px solid $darkBd;
   }
   .all-border{
     border:1px solid $darkBd;

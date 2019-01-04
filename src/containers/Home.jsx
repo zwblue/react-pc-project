@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 
 // style
-import style from './Content.module.scss'
+import style from './Home.module.scss'
 
 // Component
 import LeftMenu from '../components/layout/LeftMenu'
@@ -20,8 +20,7 @@ export class Content extends Component {
     return (
       <div className={`${style.contentBox} all-border`}>
         <LeftMenu></LeftMenu>
-        <div className={style.rightContent}>
-       
+        <div className={style.rightContent +' lf-border'}>
         </div>
       </div>
     )

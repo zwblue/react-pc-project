@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import { Menu, Icon } from 'antd';
 // router
 import { withRouter } from 'react-router-dom'
-
+// uitls
+import { getRouterParams } from '../../utils/common'
 const SubMenu = Menu.SubMenu;
 const MyIcon = Icon.createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_824133_5nkbucjjgq4.js', // 在 iconfont.cn 上生成
@@ -16,87 +17,111 @@ export class LeftMenu extends Component {
     theme: PropTypes.string
   }
   state = {
-    current: '1',
     menuList: [
       {
-        subId: 'sub1',
+        subId: 'react',
         subName: 'react',
         subIcon: 'icon-react',
-        menuItems: [
+        menus: [
           {
-            id: 'sub1_item1',
+            id: 'react_basic',
             name: 'react基本语法',
           },
           {
-            id: 'sub1_item2',
+            id: 'react_lifeCycle',
             name: 'react生命周期',
           }
         ]
       },
       {
-        subId: 'sub2',
+        subId: 'redux',
         subName: 'redux',
         subIcon: 'icon-redux',
-        menuItems: [
+        menus: [
           {
-            id: 'sub2_item1',
+            id: 'redux_basic',
             name: 'redux基础用法',
           },
           {
-            id: 'sub2_item2',
+            id: 'redux_ansyAction',
             name: 'redux异步方法',
           },
         ]
       },
       {
-        subId: 'sub3',
+        subId: 'router',
         subName: 'router',
         subIcon: 'icon-routers',
-        menuItems: [
+        menus: [
           {
-            id: 'sub3_item1',
+            id: 'router_basic',
             name: 'router基本用法',
           },
           {
-            id: 'sub3_item2',
+            id: 'router_guard',
             name: 'router路由拦截',
           },
         ]
       },
       {
-        subId: 'sub4',
+        subId: 'webpack',
         subName: 'webpack',
         subIcon: 'icon-webpack',
-        menuItems: [
+        menus: [
           {
-            id: 'sub4_item1',
+            id: 'webpack_config',
             name: 'webpack环境配置',
           },
           {
-            id: 'sub4_item2',
+            id: 'webpack_package',
             name: 'package包的介绍',
           },
         ]
       },
-    ]
+    ],
+    menu: '',
+  }
+  componentWillUpdate(props,state) {
+    if(state.menu !== this.state.menu) {
+      this.props.history.push({search:`menu=${state.menu}`})
+    }
   }
   componentDidMount(){
+    const activemenu = getRouterParams(this.props.location.search, 'menu')
+    this.setRouterParams(activemenu, 'menu')
+  }
+  // 如果没有menu  默认选中的sub菜单为第一个数组，
+  // 如果有参数，将其中的选中的item为当前路由指定的菜单
+  setRouterParams(routerParams, type) {
+    const {menuList} = this.state
+    const defaultmenuId = menuList[0].menus[0].id
+    if(!routerParams){
+      this.setState({
+        [type]: defaultmenuId,
+      },() => {
+        this.props.history.push({search:`menu=${this.state.menu}`})
+      })
+    } else {
+      this.setState({
+        [type]: routerParams
+      });
+    }
   }
   handleClick = (e) => {
-    console.log('click ', e);
     this.setState({
-      current: e.key,
+      menu: e.key,
     });
   }
   render() {
-    const menuList = this.state.menuList
+    const {menuList, menu} = this.state
+    const openKey = menu.split('_')[0]
     return (
-      <Menu
+      openKey &&  <Menu
       theme={this.props.theme}
       onClick={this.handleClick}
-      style={{ width: 256 ,overflowY: 'auto', padding: '5px 0'}}
-      defaultOpenKeys={['sub1']}
-      selectedKeys={[this.state.current]}
+      style={{ width: 256 ,overflowY: 'auto', padding: '5px 0', border: 'none'}}
+      defaultOpenKeys={[openKey]}
+      selectedKeys={[menu]}
       mode="inline"
       >
       {
@@ -104,7 +129,7 @@ export class LeftMenu extends Component {
           return(
           <SubMenu key={subItem.subId} title={<span><MyIcon type={subItem.subIcon} /><span>{subItem.subName}</span></span>}>
             {
-              subItem.menuItems.map((item) => {
+              subItem.menus.map((item) => {
                 return(
                   <Menu.Item key={item.id}>{item.name}</Menu.Item>
                 )
