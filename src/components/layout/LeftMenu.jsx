@@ -43,7 +43,7 @@ export class LeftMenu extends Component {
             name: 'redux基础用法',
           },
           {
-            id: 'redux_ansyAction',
+            id: 'redux_syncAction',
             name: 'redux异步方法',
           },
         ]
@@ -83,7 +83,8 @@ export class LeftMenu extends Component {
   }
   componentWillUpdate(props,state) {
     if(state.menu !== this.state.menu) {
-      this.props.history.push({search:`menu=${state.menu}`})
+      const {match} = this.props
+      this.props.history.push({pathname:`${match.path}/${state.menu.replace('_','/')}`,search:`menu=${state.menu}`})
     }
   }
   componentDidMount(){

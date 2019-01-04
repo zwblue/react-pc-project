@@ -1,16 +1,17 @@
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-export class LifeCycle extends Component {
+export class ReduxBasic extends Component {
   static propTypes = {
-    prop: PropTypes
+    // prop: PropTypes
   }
 
   render() {
     return (
       <div>
-          LifeCycle 页面
+        ReduxBasic 页面
       </div>
     )
   }
@@ -24,4 +25,4 @@ const mapDispatchToProps = {
   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LifeCycle)
+export default connect(mapStateToProps, mapDispatchToProps)(ReduxBasic)

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-export class LifeCycle extends Component {
+export class RouterGuard extends Component {
   static propTypes = {
     prop: PropTypes
   }
@@ -10,7 +10,7 @@ export class LifeCycle extends Component {
   render() {
     return (
       <div>
-          LifeCycle 页面
+        RouterGuard 页面
       </div>
     )
   }
@@ -24,4 +24,4 @@ const mapDispatchToProps = {
   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LifeCycle)
+export default connect(mapStateToProps, mapDispatchToProps)(RouterGuard)
