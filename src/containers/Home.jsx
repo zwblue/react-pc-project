@@ -28,7 +28,6 @@ export class Content extends Component {
     // prop: PropTypes
   }
   componentDidMount() {
-    console.log(this.props)
   }
   render() {
     return (

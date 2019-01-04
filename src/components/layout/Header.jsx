@@ -16,7 +16,6 @@ export class Header extends Component {
     // prop: PropTypes
   }
   componentDidMount(){
-    console.log(9999, this.props)
   }
   constructor(props) {
     super(props)
