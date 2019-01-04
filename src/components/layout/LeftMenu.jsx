@@ -83,6 +83,8 @@ export class LeftMenu extends Component {
   }
   componentWillUpdate(props,state) {
     if(state.menu !== this.state.menu) {
+      // 防止刷新页面时重新渲染,因为路径菜单一样，就没必要再执行这个了
+      if(getRouterParams(this.props.location.search, 'menu') === state.menu) return 
       const {match} = this.props
       this.props.history.push({pathname:`${match.path}/${state.menu.replace('_','/')}`,search:`menu=${state.menu}`})
     }
@@ -97,6 +99,7 @@ export class LeftMenu extends Component {
     const {menuList} = this.state
     const defaultmenuId = menuList[0].menus[0].id
     if(!routerParams){
+      console.log(3333333)
       this.setState({
         [type]: defaultmenuId,
       },() => {
@@ -113,6 +116,9 @@ export class LeftMenu extends Component {
       menu: e.key,
     });
   }
+  onOpenChange = (e) => {
+    console.log(e)
+  }
   render() {
     const {menuList, menu} = this.state
     const openKey = menu.split('_')[0]
@@ -121,8 +127,10 @@ export class LeftMenu extends Component {
       theme={this.props.theme}
       onClick={this.handleClick}
       style={{ width: 256 ,overflowY: 'auto', padding: '5px 0', border: 'none'}}
-      defaultOpenKeys={[openKey]}
+      // defaultOpenKeys={[openKey]}
+      openKeys={[openKey]}
       selectedKeys={[menu]}
+      onOpenChange={this.onOpenChange}
       mode="inline"
       >
       {
