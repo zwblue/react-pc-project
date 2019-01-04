@@ -99,7 +99,6 @@ export class LeftMenu extends Component {
     const {menuList} = this.state
     const defaultmenuId = menuList[0].menus[0].id
     if(!routerParams){
-      console.log(3333333)
       this.setState({
         [type]: defaultmenuId,
       },() => {
