@@ -12,6 +12,7 @@ export class BaseTheme extends Component {
   }
   updateTheme(key){
     this.props.updateTheme(key)
+    localStorage.setItem('theme', key)
   }
   render() {
     const {name, theme} = this.props

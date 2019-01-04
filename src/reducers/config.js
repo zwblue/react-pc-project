@@ -1,7 +1,7 @@
 import { UPDATE_CONFIG } from '../constants/ActionTypes'
 
 const initialState = {
-  theme: 'light'
+  theme: localStorage.getItem('theme')||'light'
 }
 
 export default (state = initialState, { type, payload }) => {
