@@ -32,8 +32,8 @@ export class LoginForm extends Component {
         console.log('Received values of form: ', values);
         if (values.remember === true) {
           const userInfo = {
-            user: 'admin',
-            password: 'dadada'
+            user: values.userName,
+            password: values.password
           }
           localStorage.setItem('userInfo',JSON.stringify(userInfo))
         } else {

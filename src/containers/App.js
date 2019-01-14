@@ -17,6 +17,9 @@ export class App extends Component {
   static propTypes = {
     theme: PropTypes.string,
   }
+  componentWillMount(){
+    sessionStorage.getItem('isLogin') || this.props.history.push('/login') 
+  }
   render() {
     const {theme} = this.props
     return (
@@ -25,7 +28,7 @@ export class App extends Component {
             {/* withRouter 包装的组件 必须在Router里面 */}
             <Header></Header> 
             <Switch>
-              <Route path="/home" component={Home} />
+              <Route path='/' component={Home}/>
               <Route path="/components" component={Components} />
               <Route path="/qus" component={Qus} />
               <Route path="/config" component={Config} />
