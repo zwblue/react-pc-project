@@ -1,0 +1,21 @@
+@import '../../styles/variable.scss';
+@import '../../styles/mixin.scss';
+.login{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background: $content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginBox{
+  width: 300px;
+}
+.desc{
+  display: flex;
+  color: $lightText;
+  justify-content: space-between;
+}
